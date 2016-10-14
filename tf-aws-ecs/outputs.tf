@@ -3,5 +3,5 @@ output "ecs_security_group" {
 }
 
 output "elb_dns_name" {
-  value = "${aws_elb.addnow_app.dns_name}"
+  value = "${aws_elb.ecs.dns_name}"
 }
