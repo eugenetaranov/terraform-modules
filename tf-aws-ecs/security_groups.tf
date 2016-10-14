@@ -14,7 +14,7 @@ resource "aws_security_group" "ecs" {
     from_port       = 0
     to_port         = 0
     protocol        = "-1"
-    security_groups = ["${aws_security_group.load_balancers.id}", "${var.ecs_sg_ingress}"]
+    security_groups = ["${aws_security_group.load_balancer.id}", "${var.ecs_sg_ingress}"]
   }
 
   egress {
