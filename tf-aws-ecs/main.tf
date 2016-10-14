@@ -24,6 +24,7 @@ resource "aws_iam_instance_profile" "ecs" {
   name  = "ecs-instance-profile"
   path  = "/"
   roles = ["${aws_iam_role.ecs_host_role.name}"]
+  depends_on = ["aws_iam_role.ecs_host_role", "aws_iam_role_policy.ecs_service_role_policy"]
 }
 
 resource "aws_ecs_cluster" "main" {
