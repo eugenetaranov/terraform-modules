@@ -17,12 +17,6 @@ resource "aws_elb" "ecs" {
     }*/
 
 
-  /*access_logs {
-      bucket        = "${var.elb_logs_bucket}"
-      bucket_prefix = "${var.elb_logs_bucket_prefix}"
-      interval      = 5
-    }*/
-
   tags {
     Name = "${var.ecs_name}"
   }
