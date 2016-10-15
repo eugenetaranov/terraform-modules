@@ -53,3 +53,7 @@ variable "bastion_instance_type" {
 variable "bastion_count" {
   default = ""
 }
+
+variable "ssh_key" {
+  default = ""
+}
