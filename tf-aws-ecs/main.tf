@@ -1,35 +1,22 @@
 resource "aws_iam_role" "ecs_host_role" {
   name               = "ecs_host_role"
-  assume_role_policy = <<EOF
-  {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": ["ecs.amazonaws.com", "ec2.amazonaws.com"]
-      },
-      "Effect": "Allow"
-    }
-  ]
-}
-EOF
+  assume_role_policy = "${file("${path.module}/ecs-role.json")}"
 }
 
 resource "aws_iam_role_policy" "ecs_instance_role_policy" {
   name   = "ecs_instance_role_policy"
-  policy = "${file(${path.module}/policies/ecs-instance-role-policy.json)}"
+  policy = "${file("${path.module}/ecs-instance-role-policy.json")}"
   role   = "${aws_iam_role.ecs_host_role.id}"
 }
 
 resource "aws_iam_role" "ecs_service_role" {
   name               = "ecs_service_role"
-  assume_role_policy = "${path.module}/ecs-role.json"
+  assume_role_policy = "${file("${path.module}/ecs-role.json")}"
 }
 
 resource "aws_iam_role_policy" "ecs_service_role_policy" {
   name   = "ecs_service_role_policy"
-  policy = "${file(${path.module}/policies/ecs-service-role-policy.json)}"
+  policy = "${file("${path.module}/ecs-service-role-policy.json")}"
   role   = "${aws_iam_role.ecs_service_role.id}"
 }
 
@@ -37,7 +24,6 @@ resource "aws_iam_instance_profile" "ecs" {
   name  = "ecs-instance-profile"
   path  = "/"
   roles = ["${aws_iam_role.ecs_host_role.name}"]
-  depends_on = ["aws_iam_role.ecs_host_role", "aws_iam_role_policy.ecs_service_role_policy"]
 }
 
 resource "aws_ecs_cluster" "main" {
