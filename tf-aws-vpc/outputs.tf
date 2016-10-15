@@ -21,3 +21,7 @@ output "private_route_table_id" {
 output "default_security_group_id" {
   value = "${aws_vpc.mod.default_security_group_id}"
 }
+
+output "bastion_dns_name" {
+  value = "${aws_instance.bastion.public_dns}"
+}

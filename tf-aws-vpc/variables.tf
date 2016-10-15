@@ -41,3 +41,15 @@ variable "public_propagating_vgws" {
   description = "A list of VGWs the public route table should propagate."
   default     = []
 }
+
+variable "bastion_ami" {
+  default = ""
+}
+
+variable "bastion_instance_type" {
+  default = ""
+}
+
+variable "bastion_count" {
+  default = ""
+}
