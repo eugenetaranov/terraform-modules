@@ -5,7 +5,7 @@ resource "aws_instance" "bastion" {
   instance_type     = "${var.bastion_instance_type}"
   subnet_id         = "${element(aws_subnet.public.*.id, count.index)}"
   key_name          = "${var.ssh_key}"
-  vpc_security_groups_ids   = ["${aws_security_group.bastion.id}"]
+  vpc_security_group_ids   = ["${aws_security_group.bastion.id}"]
 
   tags {
     Name = "bastion-${count.index}"
