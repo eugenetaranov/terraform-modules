@@ -45,7 +45,7 @@ variable "vpc_subnets_ecs" {
   default     = []
 }
 
-variable "vpc_subnets_elb" {
+variable "vpc_subnets_alb" {
   description = "Subnets ECS ELB to be launched in"
   default     = []
 }

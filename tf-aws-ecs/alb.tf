@@ -2,7 +2,7 @@ resource "aws_alb" "ecs" {
   name            = "${var.ecs_name}"
   internal        = false
   security_groups = ["${aws_security_group.load_balancer.id}"]
-  subnets         = ["${var.vpc_subnets_elb}"]
+  subnets         = ["${var.vpc_subnets_alb}"]
 
   enable_deletion_protection = false
 

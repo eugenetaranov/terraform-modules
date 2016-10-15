@@ -14,7 +14,7 @@ module "ecs" {
   asg_desired_capacity = 1
   vpc_id               = "${module.vpc.vpc_id}"
   vpc_subnets_ecs      = ["${module.vpc.private_subnets}"]
-  vpc_subnets_elb      = ["${module.vpc.public_subnets}"]
+  vpc_subnets_alb      = ["${module.vpc.public_subnets}"]
 }
 ```
 
