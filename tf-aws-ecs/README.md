@@ -1,4 +1,4 @@
-Terraform module creating AWS ECS cluster, launch configuration and autoscaling group, iam profiles, load balancer. 
+Terraform module creating AWS ECS cluster, launch configuration and autoscaling group, iam profiles, security groups, load balancer. 
 
 Example of usage:
 ```
@@ -17,3 +17,8 @@ module "ecs" {
   vpc_subnets_elb      = ["${module.vpc.public_subnets}"]
 }
 ```
+
+TODO:
+- improve iam profiles;
+- ASG scale-in and scale-out configuration;
+- ECS service scale-in and scale-out
