@@ -21,6 +21,10 @@ Module Input Variables
 - `map_public_ip_on_launch` - should be false if you do not want to auto-assign public IP on launch
 - `private_propagating_vgws` - list of VGWs the private route table should propagate
 - `public_propagating_vgws` - list of VGWs the public route table should propagate
+- `bastion_ami` - ssh bastion instance AMI
+- `bastion_count` - number of bastion hosts to be created
+- `bastion_instance_type` - ssh bastion instance type
+- `ssh_key` - ssh key to connect to bastion instance
 
 It's generally preferable to keep `public_subnets`, `private_subnets`, and
 `azs` to lists of the same length.
@@ -50,6 +54,7 @@ Outputs
  - `public_subnets` - list of public subnet ids
  - `public_route_table_id` - public route table id string
  - `private_route_table_id` - private route table id string
+ - `bastion_dns_name` - ssh bastion instance public dns name
 
 Authors
 =======
