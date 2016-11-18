@@ -60,3 +60,21 @@ resource "aws_route_table_association" "public" {
   subnet_id      = "${element(aws_subnet.public.*.id, count.index)}"
   route_table_id = "${aws_route_table.public.id}"
 }
+
+resource "aws_security_group_rule" "icmp" {
+  type              = "ingress"
+  from_port         = -1
+  to_port           = -1
+  protocol          = "icmp"
+  self              = "true"
+  security_group_id = "${aws_vpc.main.default_security_group_id}"
+}
+
+resource "aws_security_group_rule" "icmp" {
+  type              = "egress"
+  from_port         = 0
+  to_port           = 65535
+  protocol          = "all"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = "${aws_vpc.main.default_security_group_id}"
+}
