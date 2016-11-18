@@ -69,12 +69,3 @@ resource "aws_security_group_rule" "default_icmp" {
   self              = "true"
   security_group_id = "${aws_vpc.mod.default_security_group_id}"
 }
-
-resource "aws_security_group_rule" "default_egress" {
-  type              = "egress"
-  from_port         = 0
-  to_port           = 65535
-  protocol          = "all"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = "${aws_vpc.mod.default_security_group_id}"
-}
