@@ -61,7 +61,7 @@ resource "aws_route_table_association" "public" {
   route_table_id = "${aws_route_table.public.id}"
 }
 
-resource "aws_security_group_rule" "icmp" {
+resource "aws_security_group_rule" "default_icmp" {
   type              = "ingress"
   from_port         = -1
   to_port           = -1
@@ -70,7 +70,7 @@ resource "aws_security_group_rule" "icmp" {
   security_group_id = "${aws_vpc.mod.default_security_group_id}"
 }
 
-resource "aws_security_group_rule" "icmp" {
+resource "aws_security_group_rule" "default_egress" {
   type              = "egress"
   from_port         = 0
   to_port           = 65535
