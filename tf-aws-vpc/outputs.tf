@@ -22,6 +22,10 @@ output "default_security_group_id" {
   value = "${aws_vpc.mod.default_security_group_id}"
 }
 
+output "bastion_security_group_id" {
+  value = "${aws_vpc.mod.aws_security_group.bastion.id}"
+}
+
 output "bastion_ip" {
   value = "${aws_instance.bastion.public_ip}"
 }
